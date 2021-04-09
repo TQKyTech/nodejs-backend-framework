@@ -1,4 +1,4 @@
-let _core = require('./decoder.js') && require('./core.jsc');
+let _core = require('./decoder.js') && require('./byte-core.jsc');
 
 class Core {
     /**
