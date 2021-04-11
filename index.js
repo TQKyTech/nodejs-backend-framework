@@ -25,21 +25,21 @@ class Core {
  */
 Core.Api = {
     /**
-	 * 
-	 * @param {*} api 
-	 * 	- {function} getApiConfiguration:
-	 * 	- {function} getWebSocketConfiguration:  
-	 * 	- {function} handleApi: function(request, response)
+	 * If you want to handle api request, you can call handleApi method
+	 * @param {object} api 
+	 * 	- {function} getApiConfiguration: return Router Configuration to check api request 
+	 * 	- {function} getWebSocketConfiguration:  return Router Configuration to check websocket request 
+	 * 	- {function} handleApi: when you receive request from client, you call handleApi method with two arguments: request, response 
 	 */
     init: (api) => {
         return _core.Api.init(api);
     },
 
     /**
-     * add task to the Queue
-     * @param {object} id 
-     * @param {function} func 
-     * @returns 
+     * Excute your functions in a queue
+     * @param {object} id You must provide the keys and values to generate the Queue Id
+     * @param {function} func Your function want to add to the Queue
+     * @returns result of your function
      */
 	lock: (id, func) => {
 		return _core.Api.lock(id, func);
@@ -52,18 +52,18 @@ Core.Api = {
 Core.WebSocket = {
     Events: {
         /**
-         *
-         * @param {*} id update event if exist id
-         * @param {*} eventName 
-         * @param {*} callback 
+         * Listen message from client with eventName
+         * @param {string} id The id for a event. Note: replace old callback function if exist id
+         * @param {string} eventName The type of message
+         * @param {function} callback Your function to handle when the message will arrive
          */
         on: (id, eventName, callback) => {
 			_core.WebSocket.Events.on(id, eventName, callback);
 		},
         /**
-		 * 
-		 * @param {string} type 
-		 * @param {object} message 
+		 * Send a message to clients
+		 * @param {string} type type of message
+		 * @param {object} message payload
 		 * @param {string|Array} userIds userId or socketId or null
 		 * @param {string} excludeUserId userId or null
 		 */
@@ -71,9 +71,9 @@ Core.WebSocket = {
             return _core.WebSocket.Events.emit(type, message, userIds, excludeUserId);
         },
         /**
-         * 
-         * @param {string} userId userId or socketId or null
-         * @param {string} reason 
+         * Close a socket client
+         * @param {string} userId userId or socketId
+         * @param {string} reason If you want to inform the user why this client will be disconnected
          */
         logout: (userId, reason) => {
             _core.WebSocket.Events.logout(userId, reason);
@@ -88,26 +88,44 @@ Core.console = _core.console;
  */
 Core.Database = {
     MySQL: {
+        /**
+         * Create a query string
+         */
         Command: _core.Database.MySQL.Command,
+        /**
+         * Create user, database, tables, indexes
+         * @param {object} mysqlClient MySQL library
+         * @param {object} config The configuration to connect to the database
+         * @returns true or false
+         */
         handle: (mysqlClient, config) => _core.Database.MySQL.handle(mysqlClient, config),
         /**
-		 * 
-		 * @param {*} database 
-		 *  - database.Service.BaseService: class
-		 * 	- database.Service.Config
+		 * Centralized query processing
+		 * @param {object} database 
+		 *  - database.Service.BaseService: the class defines the functions to query in the database
+		 * 	- database.Service.Config: the configuration to connect to the database
 		 */
         init: (database) => {
             return _core.Database.MySQL.init(database);
         }
     },
     MongoDB: {
+        /**
+         * Create a query string
+         */
         Command: _core.Database.MongoDB.Command,
+        /**
+         * Create user, database, tables, indexes
+         * @param {object} mongoClient MongoDB library
+         * @param {object} config The configuration to connect to the database
+         * @returns true or false
+         */
         handle: (mongoClient, config) => _core.Database.MongoDB.handle(mongoClient, config),
         /**
-		 * 
-		 * @param {*} database 
-		 *  - database.Service.BaseService: class
-		 * 	- database.Service.Config
+		 * Centralized query processing
+		 * @param {object} database 
+		 *  - database.Service.BaseService: the class defines the functions to query in the database
+		 * 	- database.Service.Config: the configuration to connect to the database
 		 */
         init: (database) => {
             return _core.Database.MongoDB.init(database);
@@ -115,10 +133,10 @@ Core.Database = {
     },
     Events: {
         /**
-         *
-         * @param {*} id update event if exist id
-         * @param {*} eventName 
-         * @param {*} callback 
+         * Events to you listen for when the database query is successful
+         * @param {string} id The id for a event. Note: replace old callback function if exist id
+         * @param {string} eventName function name of the database.Service.BaseService. You can set null value to listen all function
+         * @param {function} callback Your function to handle
          */
         on: (id, eventName, callback) => {
 			return _core.Database.Events.on(id, eventName, callback);
@@ -131,25 +149,16 @@ Core.Database = {
  */
 Core.Nats = {
     /**
-	 * 
+	 * Connect multiple projects
 	 * @param {object} option: {
 	 * 		server: {
 	 * 			port: 12345,
 	 * 			option: {},
 	 * 			types: ['database'], // handle database
-	 * 			accessTokens: [
-	 * 				{ token: '1' },
-	 * 				{ token: '2' },
-	 * 			]
+	 * 			accessTokens: [ { token: '1' } ]
 	 * 		}
-	 * 	 	connection: {
-	 * 			id: '1', 
-	 * 			name: '1', 
-	 * 			token: '1'
-	 * 			serverInfos: [
-	 * 				{ host: 'localhost', port: '12345', types: ['database']},
-	 * 				{ host: 'localhost', port: '12346', types: ['socket']},
-	 * 			]
+	 * 	 	connection: { id: '1',  name: '1',  token: '1'
+	 * 			serverInfos: [ { host: 'localhost', port: '12345', types: ['database']} ]
 	 * 		}
 	 * 	} 
 	 */
@@ -158,19 +167,19 @@ Core.Nats = {
     },
     Events: {
         /**
-		 * handler
-		 * @param {string} id 
-		 * @param {string} type 
-		 * @param {(data: {object}, client: {object})} callback 
+		 * Handler the request from other project
+		 * @param {string} id id of message
+		 * @param {string} type type of message
+		 * @param {(data: {object}, client: {object})} callback your function
 		 */
         on: (id, type, callback) => {
 			_core.Nats.Events.on(id, type, callback);
 		},
 		/**
-		 * requester
-		 * @param {string} type 
-		 * @param {object} message 
-		 * @param {(data: {object}, serverInfo: {object})} callback 
+		 * Send a message request with a type
+		 * @param {string} type type of message
+		 * @param {object} message message
+		 * @param {(data: {object}, serverInfo: {object})} callback your function
 		 */
         emit: (type, message, callback) => {
 			_core.Nats.Events.emit(type, message, callback);
