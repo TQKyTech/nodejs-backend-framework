@@ -173,16 +173,17 @@ Core.Nats = {
 		 * @param {(data: {object}, client: {object})} callback your function
 		 */
         on: (id, type, callback) => {
-			_core.Nats.Events.on(id, type, callback);
+			return _core.Nats.Events.on(id, type, callback);
 		},
 		/**
 		 * Send a message request with a type
 		 * @param {string} type type of message
 		 * @param {object} message message
 		 * @param {(data: {object}, serverInfo: {object})} callback your function
-		 */
+         * @returns true | false
+         */
         emit: (type, message, callback) => {
-			_core.Nats.Events.emit(type, message, callback);
+			return _core.Nats.Events.emit(type, message, callback);
         }
     }
 }
