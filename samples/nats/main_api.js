@@ -39,7 +39,7 @@ Main.start = async function () {
     });
 
     setInterval(() => {
-        let result = Main.Core.Nats.Events.emit('database', { id: '1', type: 'database', data: { method: 'FIND', action: '/find/user', data: {} } }, (result, serverInfo) => {
+        let result = Main.Core.Nats.Events.emit('database', { id: '1', type: 'database', data: { action: '/find/user', data: {} } }, (result, serverInfo) => {
             console.log(serverInfo.port, result);
         });
         console.log('emit: ', result);
