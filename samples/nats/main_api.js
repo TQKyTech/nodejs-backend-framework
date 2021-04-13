@@ -1,7 +1,7 @@
 
 class Main { }
 
-Main.Core = require('./Core/Src/server/1.0.0/Core.js');
+Main.Core = require('../../');
 
 Main.PublicMain = {
     Config: {
