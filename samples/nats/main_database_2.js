@@ -1,7 +1,7 @@
 
 class Main { }
 
-Main.Core = require('../..');
+Main.Core = require('../../');
 
 Main.PublicMain = {
     Config: {
@@ -36,7 +36,7 @@ Main.start = async function () {
     });
     Main.Core.Nats.Events.on('<your id>', 'database', async (data) => {
         if (data && data.data && data.data.action.toLowerCase() == '/find/user') {
-            if (data.data.method.toLowerCase() == 'request') {
+            if (data.data.method.toLowerCase() == 'request' || data.data.method.toLowerCase() == 'request_all') {
                 let result = {
                     code: 200, success: true, message: '',
                     result: [{

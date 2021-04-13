@@ -1,7 +1,7 @@
 
 class Main { }
 
-Main.Core = require('../..');
+Main.Core = require('./Core/Src/server/1.0.0/Core.js');
 
 Main.PublicMain = {
     Config: {
@@ -39,11 +39,11 @@ Main.start = async function () {
     });
 
     setInterval(() => {
-        let result = Main.Core.Nats.Events.emit('database', { id: '1', type: 'database', data: { action: '/find/user', data: {} } }, (result, serverInfo) => {
+        let result = Main.Core.Nats.Events.emit('database', { id: '1', type: 'database', data: { method: 'REQUEST_ALL', action: '/find/user', data: {} } }, (result, serverInfo) => {
             console.log(serverInfo.port, result);
         });
         console.log('emit: ', result);
-    }, 5000);
+    }, 2000);
 
 }
 
