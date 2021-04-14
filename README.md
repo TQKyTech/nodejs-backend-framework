@@ -8,12 +8,12 @@ This FrameWork is organized according to independent architecture according to e
 ###  Hot Reload
 When we run in Debug mode, FrameWork supports them to execute the created or saved files without having to run the program again.
 
-###  Database:
+###  Database
 1. Connect: support connecting to many different databases.
 2. Support to swap simple queries between SQL and noSQL without having to change source code.
 3. Support event notification when database queries are successful, so it is easy to create reports and manage Caching.
 
-###  API:
+###  API
 1. Version: supports creating multiple versions of api, can inherit or rewrite the old version api and query to multiple databases.
 2. IP, Token authentication: centralized authentication processing when there are incoming requests.
 3. Validation: 
@@ -22,7 +22,7 @@ When we run in Debug mode, FrameWork supports them to execute the created or sav
     * Set up a queue for the API
     * Support for adding independent tasks to API queue.
 
-###  WebSocket(same port as API): 
+###  WebSocket
 1. Manage current online / offline users. Classify sent data via packet type and ease real-time communication between client-server over this type of packet.
 2. Support API calling using WebSocket: WebSocket will help navigate the packet to the corresponding API. It helps to keep the original connection and reduce the time to connect to the server for later requests.
 
