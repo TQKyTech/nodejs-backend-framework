@@ -17,20 +17,13 @@ Presenter.init = async function(publicPresenter) {
 
 Presenter.getNewConfig = function() {
     Presenter.Config = {...Presenter.Config, ...{
-        // host: 'localhost',
-        // port: 3306,
-        // databaseName: 'Test',
-        // username: 'root',
-        // password: '123456789',
-        // databaseUsername: 'test1',
-        // databasePassword: '123456789'
         host: 'localhost',
         port: 3306,
-        databaseName: 'Bill',
+        databaseName: 'Test',
         username: 'root',
-        password: 'TQKy3991^)^)',
-        databaseUsername: 'tqky10',
-        databasePassword: 'TQKy3991^)^)'
+        password: '123456789',
+        databaseUsername: 'test1',
+        databasePassword: '123456789'
     }};
 }
 
