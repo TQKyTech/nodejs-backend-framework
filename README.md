@@ -29,6 +29,9 @@ When we run in Debug mode, Framework supports them to execute the created or sav
 ###  Nats
 Support for connection, communication and data synchronization between services on 1 or more servers.
 
+###  CommandLineService
+We can use the terminal to connect to the program running release to see the console.log, execute the function, see the value of the variable...
+
 
 ## License
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software
