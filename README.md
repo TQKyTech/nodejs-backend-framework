@@ -30,7 +30,7 @@ When we run in Debug mode, Framework supports them to execute the created or sav
 Support for connection, communication and data synchronization between services on 1 or more servers.
 
 ###  CommandLineService
-We can use the terminal to connect to the program running release to see the console.log, execute the function, see the value of the variable...
+We can use the terminal to connect to the program running release to run script, execute the function, show the console.log, get value of the variables...
 
 
 ## License
