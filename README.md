@@ -1,12 +1,12 @@
 # backend-framework-nodejs
-The framework for Back-end developers at TQKyTech. Created by TQKy
+The Framework for Back-end developers at TQKyTech. Created by TQKy
 
 
 ## About The Project
-This FrameWork is organized according to independent architecture according to each function. Can easily split jobs and work independently from each other. And we can also easily split into multiple Services and install on 1 or more different servers, and we can communicate and synchronize each other between these Services. Summary:
+This Framework is organized according to independent architecture according to each function. Can easily split jobs and work independently from each other. And we can also easily split into multiple Services and install on 1 or more different servers, and we can communicate and synchronize each other between these Services. Summary:
 
 ###  Hot Reload
-When we run in Debug mode, FrameWork supports them to execute the created or saved files without having to run the program again.
+When we run in Debug mode, Framework supports them to execute the created or saved files without having to run the program again.
 
 ###  Database
 1. Connect: support connecting to many different databases.
@@ -28,6 +28,9 @@ When we run in Debug mode, FrameWork supports them to execute the created or sav
 
 ###  Nats
 Support for connection, communication and data synchronization between services on 1 or more servers.
+
+###  CommandLineService
+We can use the terminal to connect to the program running release to see the console.log, execute the function, see the value of the variable...
 
 
 ## License
