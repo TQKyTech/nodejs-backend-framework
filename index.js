@@ -188,4 +188,18 @@ Core.Nats = {
     }
 }
 
+Core.CommandLineService = {
+	/**
+	 * Connect and debugging your service running. command:
+     *  - show console.log: -a showlog
+     *  - run a function ('login'): -d Api.Service.User.login({"body": {"username": "user1", "passowrd": "123"}}
+     *  - get value a variable ('Config'): -d Config 
+	 * @param {array} option key, host, port. ex: 'remote -h localhost -p 7679 -k 123'
+	 * @returns 
+	 */
+	init: async (option) => {
+		return await _core.CommandLineService.init(option);
+	}
+}
+
 module.exports = Core;
