@@ -1,0 +1,17 @@
+{
+    "name": "backend-framework-nodejs",
+    "version": "1.0.0",
+    "description": "The Framework for Back-end developers at TQKyTech",
+    "main": "index.js",
+    "bin": "index.js",
+    "keywords": [
+      "backend framework nodejs"
+    ],
+    "author": "TQKy",
+    "license": "ISC",
+    "dependencies": {
+      "cron": "^1.8.2",
+      "ws": "^7.4.5"
+    }
+  }
+  
