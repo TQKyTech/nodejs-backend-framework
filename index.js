@@ -165,6 +165,15 @@ Core.Nats = {
     init: (option) => {
         return _core.Nats.init(option);
     },
+    updateConnection(connection) {
+        _core.Nats.updateConnection(connection);
+    },
+    get server() {
+        return _core.Nats.server;
+    },
+    get connection() {
+        return _core.Nats.connection;
+    },
     Events: {
         /**
 		 * Handler the request from other project
